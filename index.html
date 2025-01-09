@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | GR Network</title>
+    <style>
+        :root {
+            --primary: #8000ff;
+            --primary-light: #a64dff;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --white: #fff;
+            --footer-bg: #0a0a29;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .apply-btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--bg-light);
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb span::before {
+            content: ">";
+            margin: 0 0.5rem;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: var(--max-width);
+            margin: 2rem auto;
+            padding: 0 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .content {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .content a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--white);
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo img {
+            width: 150px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">GR Network</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Job Program</a>
+                <a href="#">Govt. Partnerships</a>
+                <a href="#">Higher Education</a>
+                <a href="#">Resources</a>
+                <a href="#">Contact Us</a>
+                <a href="#" class="apply-btn">Apply now</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="#">Home</a>
+            <span>Term And Conditions</span>
+        </div>
+    </div>
+
+    <main class="main">
+        <h1 class="page-title">Term And Conditions</h1>
+
+        <!-- Sections from the original HTML -->
+        <section class="section">
+            <h2 class="section-title">Payments, Refunds & Cancellation</h2>
+            
+            <h3 class="subsection-title">Payments:</h3>
+            <div class="content">
+                <p>Online Payments can be done by: BillDesk</p>
+                <p>Online Payment: Card payment and Net Banking Payment via BillDesk Payment Gateway can be done at Online Payment link on Make Payment page.</p>
+                <p>Problem with any payment: Please talk to us on +91 8860243125 or email us at <a href="mailto:surya@gr.com">surya@gr.com</a></p>
+            </div>
+
+            <h3 class="subsection-title">Refunds & Cancellation:</h3>
+            <div class="content">
+                <p>Refunds / Cancellation initiated will be credited to the account/card from where the transaction had initiated.</p>
+            </div>
+        </section>
+
+        <!-- More sections... -->
+        <section class="section">
+        <h2 class="section-title">Terms & Conditions</h2>
+        <div class="content">
+            <p>To avail the services offered at www.hcltechbee.com, you must agree to the following terms and conditions:</p>
+            <p>Please read the term and conditions carefully. While using any current or future services offered by <a href="https://gowthamrajnetwork.com/">www.gowthamrajnetwork.com</a>, whether or not included in the www.hcltechbee.com Website, you will abide by these Terms & conditions the guidelines and conditions applicable to such service.</p>
+        </div>
+    </section>
+
+    <!-- Additional sections as per screenshots -->
+    
+    <section class="section">
+        <h2 class="section-title">Privacy Policy</h2>
+        <div class="content">
+            <p>Please review our Privacy Policy, which also governs your visit to <a href="https://gowthamrajnetwork.com/">www.gowthamrajnetwork.com</a>, to fully understand our practices.</p>
+        </div>
+    </section>
+
+    <!-- More sections... -->  <section class="section">
+            <h2 class="section-title">Representations And Warranties:</h2>
+            <div class="content">
+                <p>By using the Site, you represent and warrant that:</p>
+                <ul>
+                    <li>all registration information you submit will be true, accurate, current, and complete;</li>
+                    <li>you will maintain the accuracy of such information and promptly update such registration information as necessary;</li>
+                    <li>you have the legal capacity and you agree to comply with these Terms and Conditions; All users who are minors in the jurisdiction in which they reside (generally under the age of 18) must have the permission of, and be directly supervised by, their parent or guardian to use the Site. If you are a minor, you must have your parent or guardian read and agree to these Terms and Conditions prior to you using the Site;</li>
+                    <li>you will not use the Site for any illegal or unauthorized purpose;</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">User Name And Password:</h2>
+            <div class="content">
+                <p>You may be required to register with the Site. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove (without any refund of payment), reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Reviews, Comments, Communications, And Other Content</h2>
+            <h3 class="subsection-title">Nature Of Content:</h3>
+            <div class="content">
+                <p>Visitors to www.hcltechbee.com may post content and other communications, and submit suggestions, ideas, comments, questions or other information, as long as the content is not illegal, obscene, threatening, defamatory, invasive of privacy, infringing of intellectual property rights to otherwise injuries to third party or objectionable and does not consist of or contains software virus, political campaigning, commercial solicitation, mass mailing or any form of spam.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">False Information:</h2>
+            <div class="content">
+                <p>You may not use false email address, impersonate any person or entity, or otherwise mislead as to the origin of a card or other content. www.hcltechbee.com reserves the right (but not the obligation) to remove or edit such content but does not regularly review posted contents.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Rights Granted:</h2>
+            <div class="content">
+                <p>If you do post content or submit material and unless we indicate otherwise, you grant <a href="https://gowthamrajnetwork.com/">www.gowthamrajnetwork.com</a> a non-exclusive, royalty free, perpetual, irrevocable, and fully sub-licensed right to use, reproduce, modify, adapt, publish, translate, create derivative work from, distribute, and display such content throughout the world in any media. You grant www.hcltechbee.com the right to use the name that you submit in connection with such content if www.hcltechbee.com chooses.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Right Owned:</h2>
+            <div class="content">
+                <p>You represent and warrant that you own all the rights or otherwise or control all of the rights to the content that you post; that the content is accurate; that the use of the content to supply does not violate this policy and will not cause injury to any person or entity and that you will indemnify www.hcltechbee.com for all claims resulting from the content you supply. www.hcltechbee.com has the right but not the obligation to monitor and edit or remove any activity or content. www.hcltechbee.com takes no responsibility and assumes no liability for any content posted by you or any third party.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Site Policies, Modification, And Severability</h2>
+            <div class="content">
+                <p>Please review our other policies. We reserve the right to make changes to our Site, policies, and these Terms and Conditions at any time. If any of these conditions shall be deemed invalid, void, or for any reason unenforceable, that condition shall be deemed severable and will not affect the validity and enforceability of any remaining conditions.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Intellectual Property Rights</h2>
+            <h3 class="subsection-title">Copyright Protection:</h3>
+            <div class="content">
+                <p>All content included on this site, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the property of www.hcltechbee.com or its content suppliers and protected by international copyright laws.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Governing Law And Jurisdiction</h2>
+            <div class="content">
+                <p>These terms and conditions will be construed only in accordance with the laws of India. In respect of all matters/disputes arising out of, in connection with or in relation to these terms and conditions or any other conditions on this Site, only the competent Courts at Mumbai, Mumbai shall have jurisdiction, to the exclusion of all other courts.HCL Training and Staffing Services ("us", "we", or "our") operates the www.hcltechbee.com website (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+            </div>
+        </section>
+        <a href="#" class="scroll-top">↑</a>
+    </div>
+
+
+       
+    </main>
+   
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <!-- <img src="company-logo.png" alt="GR Logo"> -->
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#">About Us</a>
+                <a href="#">Job Program</a>
+                <a href="#">Higher Education</a>
+                <a href="#">Govt. Partnerships</a>
+            </div>
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <a href="#">Career Guidance Sessions</a>
+                <a href="#">Media Coverage</a>
+                <a href="#">Blogs</a>
+                <a href="#">Request for School Visit</a>
+                <a href="#">Apply Now</a>
+            </div>
+            <div class="footer-links">
+                <h3>Follow us</h3>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright© 2024 GR  | All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Term and Conditions</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top functionality
+        const scrollBtn = document.querySelector('.scroll-top');
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+                header.classList.add('scrolled');
+            } else {
+                scrollBtn.classList.remove('visible');
+                header.classList.remove('scrolled');
+            }
+        });
+
+        scrollBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
